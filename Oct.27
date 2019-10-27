@@ -1,0 +1,65 @@
+//
+////
+/////
+//linearSearch
+//takes in two inputs arr and val
+//for every element in arr x arr[x] is comapred with var
+//if found it prints and returns else returns at end
+function linearSearch(arr, val) {
+    for (x in arr) {
+        if (arr[x] === val) {
+            console.log(x)
+        }
+    }
+}
+//linearSearch([34, 51, 1, 2, 3, 45, 56, 687], 687)
+//
+////
+/////
+//binarySearch
+//input an array and an element to compare to 
+//have three vars start at 0, end statione=d at the arr.length-1 , middle which is the floor of start + end /2
+//start a while loop that goes while start <= end and also elem is not eq to the current middle element of the arr being procc
+//two if statements if arr[middle] > elem since its an ordered value take the end value and assign to middle - 1
+//two if statements if arr[middle] < elem since its an ordered value take the start value and assign to middle + 1
+//recalculate the middle value every while loop so outside the if statemenets
+//outside the while loop if elem === arr[middle] console.log(found)
+function binarySearch(arr, elem) {
+    var start = 0;
+    var end = arr.length - 1;
+    var middle = Math.floor((start + end) / 2);
+    while (start <= end && arr[middle] !== elem) {
+        console.log("running")
+        if (elem > arr[middle]) start = middle + 1;
+        else end = middle - 1;
+        middle = Math.floor((start + end) / 2);
+    }
+    return arr[middle] === elem ? console.log("found it at " + middle) : -1;
+}
+//binarySearch([1, 2, 3, 4, 5, 6, 7, 8], 4)
+//
+////
+/////
+//naiveSearch
+//input takes in two strings
+//declares a var count
+//starts a for loop for long string 
+//starts another for loop for short within long
+//while short loop is going compare if the j letter of short equals the i letter of long, if they are similar keep going   
+//instead of comparing short[j] === long[i] we comapre short[j] !== long[i+j]
+//the reason for the long[i+j]  is to account for a shift in a i position which happens when a prior comaprision breaks
+//keep count and return at the end of outer loop
+function naiveSearch(long, short) {
+    var count = 0;
+    for (var i = 0; i < long.length; i++) {
+        for (var j = 0; j < long.length; j++) {
+            if (short[j] !== long[j + i]) break;
+        }
+        if (short.length === j) count++;
+    }
+    console.log(count);
+}
+//naiveSearch("hi this is hi", "hi")
+//
+////
+//////
